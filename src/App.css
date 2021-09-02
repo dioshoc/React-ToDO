@@ -1,4 +1,9 @@
 .App {
-  max-width: 800px;
+  max-width: 400px;
   margin: 300px auto;
+}
+.TodoItem{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
