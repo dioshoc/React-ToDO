@@ -1,8 +1,8 @@
 import React from "react";
 import './App.css';
-import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoList/TodoList";
 import {useState} from "react";
-
+import AddTodo from "./components/AddTodo/AddTodo";
 
 const App = () => {
   const [todoList, setTodoList] = useState(
@@ -14,8 +14,8 @@ const App = () => {
   );
 
   function handleToggleChecked(id) {
-    setTodoList(todoList.map((item) => {
-        if (item.id === id) {
+    setTodoList(todoList.map((item, index) => {
+        if (index + 1 === id) {
           let negation = !item.checked
           return {
             ...item,
@@ -28,11 +28,23 @@ const App = () => {
   }
 
   function handleRemoveTodo(id) {
-    setTodoList(todoList.filter(item => item.id !== id))
+    setTodoList(todoList.filter((item, index) => index + 1 !== id))
+  }
+
+  function handleAddTodo(value){
+    const item = {
+      id: Date.now(),
+      text: value,
+      checked: false
+    }
+    setTodoList(todoList.concat(item))
   }
 
   return (
     <div className="App">
+      <AddTodo
+        handleAddTodo={handleAddTodo}
+      />
       <TodoList
         todoList={todoList}
         handleRemoveTodo={handleRemoveTodo}

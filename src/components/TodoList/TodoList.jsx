@@ -1,13 +1,13 @@
 import React from "react";
-import TodoItem from "./TodoList/TodoItem/TodoItem";
+import TodoItem from "./TodoItem/TodoItem";
 
-function TodoList(props) {
+const TodoList = (props) => {
   return (
     <ul className="TodoList">
-      {props.todoList.map(item =>
+      {props.todoList.map((item, index) =>
         <TodoItem
           key={item.id}
-          id={item.id}
+          id={index + 1}
           text={item.text}
           checked={item.checked}
           handleRemoveTodo={props.handleRemoveTodo}
