@@ -1,10 +1,11 @@
+import React from "react";
 import './App.css';
-import TodoList from "./TodoList/TodoItem";
+import TodoList from "./components/TodoList";
 import {useState} from "react";
 
 
-function App() {
-  let [state, setState] = useState(
+const App = () => {
+  const [todoList, setTodoList] = useState(
     [
       {id: 1, text: "bread", checked: true},
       {id: 2, text: "milk", checked: false},
@@ -13,7 +14,7 @@ function App() {
   );
 
   function handleToggleChecked(id) {
-    setState(state = state.map((item) => {
+    setTodoList(todoList.map((item) => {
         if (item.id === id) {
           let negation = !item.checked
           return {
@@ -27,13 +28,13 @@ function App() {
   }
 
   function handleRemoveTodo(id) {
-    setState(state.filter(item => item.id !== id))
+    setTodoList(todoList.filter(item => item.id !== id))
   }
 
   return (
     <div className="App">
       <TodoList
-        todoList={state}
+        todoList={todoList}
         handleRemoveTodo={handleRemoveTodo}
         handleToggleChecked={handleToggleChecked}
       />
