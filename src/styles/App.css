@@ -1,0 +1,15 @@
+.app {
+  max-width: 1637px;
+  margin: 0 auto;
+}
+
+.app__title{
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 84px;
+  text-align: center;
+  letter-spacing: 0.49em;
+  margin-bottom: 126px;
+}

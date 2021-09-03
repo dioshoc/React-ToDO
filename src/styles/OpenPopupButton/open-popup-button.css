@@ -1,0 +1,32 @@
+.open-popup-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 123px;
+  height: 123px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: #257189;
+  right: 53px;
+  bottom: 48px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.open-popup-button:hover {
+  background-color: #3291AF;
+}
+
+.open-popup-button:hover svg rect{
+  fill: #C9E6EC;
+}
+
+.open-popup-button:active {
+  background-color: #4EC3E9;
+}
+
+.open-popup-button:active svg rect{
+  fill: #C9E6EC;
+}

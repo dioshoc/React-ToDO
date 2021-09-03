@@ -1,0 +1,25 @@
+.popup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000030;
+  top: 0;
+  left: 0;
+}
+
+.popup.active{
+  display: flex;
+}
+
+.popup__content{
+  display: flex;
+  flex-direction: column;
+  max-width: 807px;
+  width: 100%;
+  padding: 72px 118px 46px 112px;
+  box-sizing: border-box;
+  background-color: #fff;
+}

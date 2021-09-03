@@ -1,55 +1,52 @@
-import React from "react";
-import './App.css';
+import React, {useEffect} from "react";
+import './styles/App.css';
 import TodoList from "./components/TodoList/TodoList";
 import {useState} from "react";
-import AddTodo from "./components/AddTodo/AddTodo";
+
+import OpenPopupButton from "./components/OpenPopupButton/OpenPopupButton";
+import Popup from "./components/Popup/Popup";
 
 const App = () => {
-  const [todoList, setTodoList] = useState(
-    [
-      {id: 1, text: "bread", checked: true},
-      {id: 2, text: "milk", checked: false},
-      {id: 3, text: "butter", checked: false}
-    ]
-  );
-
-  function handleToggleChecked(id) {
-    setTodoList(todoList.map((item, index) => {
-        if (index + 1 === id) {
-          let negation = !item.checked
-          return {
-            ...item,
-            checked: negation
-          }
-        }
-        return item
-      }
-    ))
-  }
+  const [todoList, setTodoList] = useState({});
+  useEffect(() => {
+    console.log(todoList)
+  }, [todoList])
 
   function handleRemoveTodo(id) {
-    setTodoList(todoList.filter((item, index) => index + 1 !== id))
+    const newValue = {
+      ...todoList
+    }
+    delete newValue[id]
+    setTodoList(newValue
+    )
   }
 
-  function handleAddTodo(value){
+  function handleAddTodo(title, subtitle) {
     const item = {
       id: Date.now(),
-      text: value,
-      checked: false
+      title: title,
+      subtitle: subtitle
     }
-    setTodoList(todoList.concat(item))
+
+    const newValue = {
+      ...todoList,
+      [item.id]: item,
+    }
+
+    setTodoList(newValue)
   }
 
   return (
-    <div className="App">
-      <AddTodo
-        handleAddTodo={handleAddTodo}
-      />
+    <div className="app">
+      <h1 className="app__title">Todo List</h1>
+
       <TodoList
+        className="app__todo-list"
         todoList={todoList}
         handleRemoveTodo={handleRemoveTodo}
-        handleToggleChecked={handleToggleChecked}
       />
+      <OpenPopupButton />
+      <Popup handleAddTodo={handleAddTodo}/>
     </div>
   );
 }

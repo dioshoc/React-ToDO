@@ -1,19 +1,25 @@
 import React from "react";
 import TodoItem from "./TodoItem/TodoItem";
 
-const TodoList = (props) => {
+const TodoList = ({todoList, handleRemoveTodo}) => {
+  const list = []
+  for (let key in todoList) {
+    let item = todoList[key]
+    list.push(
+      <TodoItem
+        key={key}
+        id={item.id}
+        title={item.title}
+        subtitle={item.subtitle}
+        checked={item.checked}
+        handleRemoveTodo={handleRemoveTodo}
+      />
+    )
+  }
+
   return (
-    <ul className="TodoList">
-      {props.todoList.map((item, index) =>
-        <TodoItem
-          key={item.id}
-          id={index + 1}
-          text={item.text}
-          checked={item.checked}
-          handleRemoveTodo={props.handleRemoveTodo}
-          handleToggleChecked={props.handleToggleChecked}
-        />
-      )}
+    <ul className="todo-list">
+      {list}
     </ul>
   );
 }
