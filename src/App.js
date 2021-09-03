@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './styles/App.css';
 import TodoList from "./components/TodoList/TodoList";
 import {useState} from "react";
@@ -8,24 +8,21 @@ import Popup from "./components/Popup/Popup";
 
 const App = () => {
   const [todoList, setTodoList] = useState({});
-  useEffect(() => {
-    console.log(todoList)
-  }, [todoList])
+  const [showPopup, setShowPopup] = useState(false)
 
   function handleRemoveTodo(id) {
     const newValue = {
       ...todoList
     }
     delete newValue[id]
-    setTodoList(newValue
-    )
+    setTodoList(newValue)
   }
 
-  function handleAddTodo(title, subtitle) {
+  function handleAddTodo(task, note) {
     const item = {
       id: Date.now(),
-      title: title,
-      subtitle: subtitle
+      title: task,
+      subtitle: note
     }
 
     const newValue = {
@@ -36,6 +33,14 @@ const App = () => {
     setTodoList(newValue)
   }
 
+  function handleHidePopup() {
+    setShowPopup(false)
+  }
+
+  function handleShowPopup() {
+    setShowPopup(true)
+  }
+
   return (
     <div className="app">
       <h1 className="app__title">Todo List</h1>
@@ -44,9 +49,10 @@ const App = () => {
         className="app__todo-list"
         todoList={todoList}
         handleRemoveTodo={handleRemoveTodo}
+        handleHidePopup={handleHidePopup}
       />
-      <OpenPopupButton />
-      <Popup handleAddTodo={handleAddTodo}/>
+      <OpenPopupButton handleShowPopup={handleShowPopup}/>
+      <Popup handleAddTodo={handleAddTodo} handleHidePopup={handleHidePopup} showPopup={showPopup}/>
     </div>
   );
 }
