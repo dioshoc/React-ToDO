@@ -1,0 +1,66 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 19px 45px 23px;
+  margin-bottom: 20px;
+  background-color: #E1E1E1;
+  border-radius: 28px;
+  box-sizing: border-box;
+
+  transition: background-color .3s ease-in;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 50px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+  }
+
+  &__subtitle {
+    margin: 25px 0 0;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 37px;
+  }
+
+  &__button {
+    visibility: hidden;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: #FFCDCD;
+  }
+
+  &:hover &__button {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__button:hover {
+    transform: scale(0.9);
+
+    & svg rect {
+      fill: #000;
+    }
+  }
+}

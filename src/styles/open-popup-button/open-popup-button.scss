@@ -13,20 +13,20 @@
   bottom: 48px;
   cursor: pointer;
   transition: all 0.3s ease-in;
-}
 
-.open-popup-button:hover {
-  background-color: #3291AF;
-}
+  &:hover {
+    background-color: #3291AF;
 
-.open-popup-button:hover svg rect{
-  fill: #C9E6EC;
-}
+    & svg rect {
+      fill: #C9E6EC;
+    }
+  }
 
-.open-popup-button:active {
-  background-color: #4EC3E9;
-}
+  &:active {
+    background-color: #4EC3E9;
 
-.open-popup-button:active svg rect{
-  fill: #C9E6EC;
+    &svg rect {
+      fill: #C9E6EC;
+    }
+  }
 }
